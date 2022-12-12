@@ -51,7 +51,7 @@ DATABASES = {
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-1uya869km$m%mcffkbqbb5ml^q*ny1(k($o=o0(o+0920e+gh3"
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# 生产环境请关闭
 DEBUG = True
 
 # Application definition
@@ -154,7 +154,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 SIMPLEUI_HOME_INFO = False
-SIMPLEUI_INDEX = 'http://127.0.0.1:3000'
 SIMPLEUI_HOME_TITLE = "管理后台"
 SIMPLEUI_ANALYSIS = False
 SIMPLEUI_CONFIG = {
@@ -204,12 +203,10 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = "None"
 SESSION_COOKIE_SAMESITE = "None"
 # 增加跨域忽略,去除Chrome的samesite限制
-ALLOWED_HOSTS = ["127.0.0.1","localhost","*"]
+ALLOWED_HOSTS = ["*"]
 #首页图标
 CORS_ORIGIN_WHITELIST = (
-    "http://127.0.0.1:3000",
-    "http://localhost:3000",
-    "http://localhost:80",
+    '*',
 )
 CORS_ALLOW_CREDENTIALS = True  # 指明在跨域访问中，后端是否支持对cookie的操作。
 

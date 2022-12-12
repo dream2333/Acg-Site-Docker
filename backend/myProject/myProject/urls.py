@@ -16,14 +16,9 @@ Including another URLconf
 
 from myApp import views
 from django.contrib import admin
-from django.urls import path, re_path
-from django.conf import settings
-from django.conf.urls.static import static
-from django.views.generic import RedirectView
+from django.urls import path
 
 urlpatterns = [
-    # path(r"", RedirectView.as_view(url="http://127.0.0.1:3000")),
-    path(r"", RedirectView.as_view(url="admin/")),
     path(r"admin/", admin.site.urls),
     path(r"API/user/register/", views.UserViewSet.as_view({"post": "register"})),
     path(r"API/user/login/", views.UserViewSet.as_view({"post": "login"})),
@@ -56,11 +51,5 @@ urlpatterns = [
         views.UserInfoViewSet.as_view({"get": "remove_liked"}),
     ),
     path(r"API/message/my/", views.MyMessageViewSet.as_view()),
-    #path(r"API/test", views.Test.as_view()), #测试代码api 不要使用
     path(r"API/homemenu",views.HomeMenuInfoViewSet.as_view()),
-    # path(r"media/video/<str:path>",views.stream_video),
-    # path(r"API/recommend/init",views.RecommendViewSet.as_view({"get":"init"})),
-    # path(r"API/recommend/calc",views.RecommendViewSet.as_view({"get":"calc_user_sim"})),
-    # path(r"API/recommend/<str:user_id>",views.RecommendViewSet.as_view({"get":"recommend"})),
 ]
-# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
