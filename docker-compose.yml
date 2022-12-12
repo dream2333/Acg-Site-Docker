@@ -20,7 +20,7 @@ services:
     build: ./backend
     command: bash -c "python3 manage.py collectstatic --no-input &&  python3 manage.py migrate && uwsgi uwsgi.ini"
     volumes:
-      # - ./backend/myProject:/django
+      # - ./backend/myProject/media:/django/media
       - static-volume:/django/static
       - media-volume:/django/media
     ports:

@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import django
 from django.utils.encoding import force_str
+
 django.utils.encoding.force_text = force_str
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,9 +24,9 @@ LANGUAGE_CODE = "zh-Hans"
 
 TIME_ZONE = "Asia/Shanghai"
 
+# 媒体和静态资源储存根路径
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-# 媒体储存根路径
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
@@ -45,10 +46,6 @@ DATABASES = {
     }
 }
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-1uya869km$m%mcffkbqbb5ml^q*ny1(k($o=o0(o+0920e+gh3"
 
 # 生产环境请关闭
@@ -66,7 +63,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "myApp",
     "rest_framework",
-    "corsheaders",
     "rest_framework.authtoken",
 ]
 REST_FRAMEWORK = {
@@ -78,7 +74,6 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -106,9 +101,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "myProject.wsgi.application"
 
-# Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -124,23 +116,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
-
 USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
 
 SIMPLEUI_HOME_INFO = False
 SIMPLEUI_HOME_TITLE = "管理后台"
@@ -149,7 +129,6 @@ SIMPLEUI_CONFIG = {
     # 是否使用系统默认菜单
     "system_keep": False,
     # 用于菜单排序和过滤, 不填此字段为默认排序和全部显示。空列表[] 为全部不显示.
-
     # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时刷新展示菜单内容。
     # 一般建议关闭。
     "menus": [
@@ -186,40 +165,3 @@ SIMPLEUI_CONFIG = {
         },
     ],
 }
-# Google Nm$l
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_SAMESITE = "None"
-# 增加跨域忽略,去除Chrome的samesite限制
-ALLOWED_HOSTS = ["*"]
-#首页图标
-CORS_ORIGIN_WHITELIST = (
-    '*',
-)
-CORS_ALLOW_CREDENTIALS = True  # 指明在跨域访问中，后端是否支持对cookie的操作。
-
-CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ALLOW_METHODS = (
-    "DELETE",
-    "GET",
-    "OPTIONS",
-    "PATCH",
-    "POST",
-    "PUT",
-    "VIEW",
-)
-CORS_ALLOW_HEADERS = (
-    "XMLHttpRequest",
-    "X_FILENAME",
-    "accept-encoding",
-    "authorization",
-    "content-type",
-    "dnt",
-    "origin",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-    "Pragma",
-)
