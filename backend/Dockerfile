@@ -12,12 +12,13 @@ deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main con
 
 # 添加这两行
 RUN apt-get update
-RUN apt-get install libpython3-dev default-libmysqlclient-dev build-essential -y
+RUN apt-get install libpython3-dev default-libmysqlclient-dev build-essential ncat -y
 
 RUN mkdir /django
 WORKDIR /django
 RUN pip install pip -U -i https://pypi.tuna.tsinghua.edu.cn/simple
 COPY /myProject /django
+COPY wait-for.sh /django
 COPY requirements.txt /django
 RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 

@@ -18,7 +18,7 @@ services:
   django:
     restart: always
     build: ./backend
-    command: bash -c "python3 manage.py collectstatic --no-input &&  python3 manage.py migrate && uwsgi uwsgi.ini"
+    command: bash wait-for.sh db:3306 -- bash -c "python3 manage.py collectstatic --no-input &&  python3 manage.py migrate && uwsgi uwsgi.ini"
     volumes:
       # - ./backend/myProject/media:/django/media
       - static-volume:/django/static
