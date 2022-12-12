@@ -24,6 +24,8 @@ LANGUAGE_CODE = "zh-Hans"
 
 TIME_ZONE = "Asia/Shanghai"
 
+ALLOWED_HOSTS = ["*"]
+
 # 媒体和静态资源储存根路径
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
