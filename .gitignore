@@ -1,0 +1,7 @@
+frontend/node_modules/
+frontend/public/
+frontend/src/
+backend/myProject/media/*
+backend/myProject/static/*
+backend/myProject/myApp/migrations/*
+**/__pycache__
